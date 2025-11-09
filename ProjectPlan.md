@@ -10,6 +10,8 @@ If you prefer short, actionable tasks, follow the numbered "Development Roadmap"
 
 Follow these steps in order. Each step depends on the previous so do them sequentially. I included quick commands where useful.
 
+## as of 20251108 1 5.1 are complete
+
 1) Install Docker locally (Windows)
    - Why: you will build the backend container image and push to Docker Hub before creating Container Apps.
    - Install: download Docker Desktop for Windows from https://www.docker.com/products/docker-desktop and run the installer.
@@ -36,6 +38,7 @@ Follow these steps in order. Each step depends on the previous so do them sequen
 5) Provision Azure infra (same region; EastUS2 recommended)
    - Create a Resource Group (e.g., `slideSMS-rg`) and a Log Analytics workspace.
    - Create a Container Apps environment (requires Log Analytics workspace).
+   - Install AzureCLI Invoke-WebRequest (Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows).Content | Invoke-Expression
    - Create the Container App for the API using your Docker Hub image (ingress=external, target port=8000). Keep `api` DNS-only in Cloudflare.
    - Create background worker as a Container App job or an Azure Function app (Python 3.10/3.11) for queue processing.
 

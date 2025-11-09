@@ -59,9 +59,6 @@ Project plan and notes for the slideSMS.app group SMS messaging web application.
 
 This repository contains project documentation and planning artifacts.
 
-Files of interest:
-- `ProjectSummary.md` — Project plan converted from the original LaTeX file (main documentation).
-
 Quick start:
 1. Configure Git (see below).
 2. Initialize a local repository and make your first commit.
