@@ -1,0 +1,41 @@
+__pycache__/
+.venv/
+venv/
+node_modules/
+.env
+dist/
+*.pyc
+/.idea/
+/.vscode/
+*.sqlite3
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+env/
+venv/
+.env
+
+# Editor directories and files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtualenv
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# OneDrive temp
+~$*

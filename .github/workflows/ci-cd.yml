@@ -1,0 +1,22 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install backend deps
+        run: |
+          pip install -r backend/requirements.txt
+      - name: Lint (placeholder)
+        run: echo "Add lint/test steps here"
+      - name: Build and push Docker images (placeholder)
+        run: echo "Add Docker build/push steps and configure DOCKERHUB secrets"

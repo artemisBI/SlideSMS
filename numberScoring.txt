@@ -1,0 +1,4 @@
+# Number Scoring Model
+
+recipients can be added to the service multiple times by different admins 
+if a recipient has opted out, we persist and capture that w a timestamp so that on UXFLOW.FIRSTUSE.3

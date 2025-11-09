@@ -1,0 +1,6 @@
+#SAMPLEMSG1
+slideSMS.CVS - These depts are closed on THXGVG 11/24. TTY mgr nxt shift; From Spain. Txt OK to confirm, STOP to optout. 
+
+#SAMPLEMSG2
+slideSMS.YUP - Social is 11/12 @5PM to 630PM. @Location. From Spain. {Shortlink}. Txt OK to confirm, STOP to optout.
+
