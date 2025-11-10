@@ -38,14 +38,14 @@ Follow these steps in order. Each step depends on the previous so do them sequen
 5) Provision Azure infra (same region; EastUS2 recommended)
    - Create a Resource Group (e.g., `slideSMS-rg`) and a Log Analytics workspace.
    - Create a Container Apps environment (requires Log Analytics workspace).
-   - Install AzureCLI Invoke-WebRequest (Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows).Content | Invoke-Expression
+   - Install AzureCLI via WINGET
    - Create the Container App for the API using your Docker Hub image (ingress=external, target port=8000). Keep `api` DNS-only in Cloudflare.
    - Create background worker as a Container App job or an Azure Function app (Python 3.10/3.11) for queue processing.
 
    Example az CLI (edit placeholders):
    ```powershell
    az group create --name slideSMS-rg --location eastus2
-   az monitor log-analytics workspace create --resource-group slideSMS-rg --workspace-name slideSMS-law
+   az monitor log-analytics workspace create --resource-group slideSMS-rg --workspace-name slideSMS-server
    # create environment and app as previously discussed
    ```
 
