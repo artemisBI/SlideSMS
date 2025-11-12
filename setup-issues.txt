@@ -1,0 +1,12 @@
+Setup Steps and Issues:
+
+1. install docker desktop for windows
+2. install python 3.12
+3. make sure to use py.exe instead of python.exe for commands
+   - e.g. py -m venv .venv
+4. make sure to run vscode/powershell as admin
+5. make sure to set the execution policy within powershell
+6. update pip version (optional)
+8. install rust and its visual c++ prerequisites, may require visual studio installer
+9. install cargo, the rust package manager
+10. bash scripts/run_all.sh
