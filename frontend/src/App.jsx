@@ -19,18 +19,22 @@ export default function App() {
     const resList = await Promise.all(
       message.to.map((recipient) =>
         fetch(
-          `https://api.twilio.com/2010-04-01/Accounts/${process.env.TWILIO_ACCOUNT_SID}/Messages.json`,
+          `https://api.twilio.com/2010-04-01/Accounts/${
+            import.meta.env.VITE_TWILIO_ACCOUNT_SID
+          }/Messages.json`,
           {
             method: "POST",
             headers: {
               Authorization:
                 "Basic " +
                 btoa(
-                  `${process.env.TWILIO_ACCOUNT_SID}:${process.env.TWILIO_AUTH_TOKEN}`
+                  `${import.meta.env.VITE_TWILIO_ACCOUNT_SID}:${
+                    import.meta.env.VITE_TWILIO_AUTH_TOKEN
+                  }`
                 ),
             },
             body: new URLSearchParams({
-              From: process.env.TWILIO_FROM_NUMBER,
+              From: import.meta.env.VITE_TWILIO_FROM_NUMBER,
               To: `+1${recipient}`,
               Body: `${message.body}\n\n - SaveThis — Send Group SMS (Demo)`,
             }),
