@@ -81,7 +81,7 @@ echo "================================================"
 echo "Starting frontend dev server in foreground..."
 echo "================================================"
 echo ""
-echo "Frontend available at: http://localhost:5173"
+echo "Frontend available at: http://localhost:3000"
 echo ""
 echo "Press Ctrl+C to stop both servers"
 echo ""
@@ -89,13 +89,13 @@ echo ""
 # Detect OS and open browser
 if command -v start &> /dev/null; then
     # Windows (Git Bash, MINGW, etc.)
-    start http://localhost:5173 &
+    start http://localhost:3000 &
 elif command -v open &> /dev/null; then
     # macOS
-    open http://localhost:5173 &
+    open http://localhost:3000 &
 elif command -v xdg-open &> /dev/null; then
     # Linux
-    xdg-open http://localhost:5173 &
+    xdg-open http://localhost:3000 &
 fi
 
 # Start frontend in foreground
