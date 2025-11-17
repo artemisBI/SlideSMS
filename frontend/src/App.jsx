@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ExcelReader from "./ExcelReader";
 
 export default function App() {
   const [messageBody, setMessageBody] = useState("");
@@ -45,21 +46,18 @@ export default function App() {
 
     const data = await Promise.all(resList.map((res) => res.json()));
     setResult(data);
+
+    // clean up the form after sending
+    setMessageBody("");
+    setRecipients("");
   }
 
   return (
     <div style={{ maxWidth: 800, margin: "2rem auto", fontFamily: "system-ui,Segoe UI" }}>
       <h1>SaveThis — Send Group SMS (Demo)</h1>
       <form onSubmit={send}>
-        <div>
-          <label>Recipients (comma separated)</label>
-          <br />
-          <input
-            value={recipients}
-            onChange={(e) => setRecipients(e.target.value)}
-            style={{ width: "100%" }}
-          />
-        </div>
+        {/* pass a prop to reset file after result is obtained, for now may just have to refresh the page */}
+        <ExcelReader recipients={recipients} setRecipients={setRecipients} />
         <div style={{ marginTop: 10 }}>
           <label>Message</label>
           <br />
@@ -70,7 +68,9 @@ export default function App() {
           />
         </div>
         <div style={{ marginTop: 10 }}>
-          <button type="submit">Send</button>
+          <button type="submit" disabled={recipients.length === 0}>
+            Send
+          </button>
         </div>
       </form>
       {result && <pre style={{ marginTop: 20 }}>{JSON.stringify(result, null, 2)}</pre>}
