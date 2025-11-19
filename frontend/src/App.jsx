@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ExcelReader from "./ExcelReader";
 
 export default function App() {
   const [messageBody, setMessageBody] = useState("");
   const [recipients, setRecipients] = useState("");
+
   const [result, setResult] = useState(null);
+  const [sending, setSending] = useState(false);
+  const [file, setFile] = useState("");
 
   async function send(e) {
     e.preventDefault();
@@ -46,18 +49,30 @@ export default function App() {
 
     const data = await Promise.all(resList.map((res) => res.json()));
     setResult(data);
-
-    // clean up the form after sending
-    setMessageBody("");
-    setRecipients("");
+    setSending(false);
   }
+
+  useEffect(() => {
+    if (!sending) {
+      // clean up the form after sending
+      setMessageBody("");
+      setRecipients("");
+      setFile("");
+    }
+  }, [sending]);
 
   return (
     <div style={{ maxWidth: 800, margin: "2rem auto", fontFamily: "system-ui,Segoe UI" }}>
       <h1>SaveThis — Send Group SMS (Demo)</h1>
       <form onSubmit={send}>
-        {/* pass a prop to reset file after result is obtained, for now may just have to refresh the page */}
-        <ExcelReader recipients={recipients} setRecipients={setRecipients} />
+        <ExcelReader
+          recipients={recipients}
+          setRecipients={setRecipients}
+          sending={sending}
+          setSending={setSending}
+          file={file}
+          setFile={setFile}
+        />
         <div style={{ marginTop: 10 }}>
           <label>Message</label>
           <br />
@@ -68,7 +83,7 @@ export default function App() {
           />
         </div>
         <div style={{ marginTop: 10 }}>
-          <button type="submit" disabled={recipients.length === 0}>
+          <button type="submit" disabled={!recipients || !messageBody}>
             Send
           </button>
         </div>

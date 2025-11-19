@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import * as XLSX from "xlsx";
 
-const ExcelReader = ({ recipients, setRecipients }) => {
-  const [file, setFile] = useState(null);
-
+const ExcelReader = ({ recipients, setRecipients, setSending, file }) => {
   const handleFileUpload = (event) => {
-    setFile(event.target.files[0]);
+    setSending(true);
 
-    if (file) {
+    const f = event.target.files[0];
+
+    if (f) {
       const reader = new FileReader();
 
       reader.onload = (e) => {
@@ -33,16 +33,15 @@ const ExcelReader = ({ recipients, setRecipients }) => {
           .filter(Boolean); // Filter out empty or undefined values
 
         setRecipients(extractedNumbers.join(", "));
-        setFile(null);
       };
 
-      reader.readAsArrayBuffer(file);
+      reader.readAsArrayBuffer(f);
     }
   };
 
   return (
     <div>
-      <input type="file" accept=".xls,.xlsx" onChange={handleFileUpload} />
+      <input type="file" accept=".xls,.xlsx" value={file} onChange={handleFileUpload} />
       <div>
         <h2>Recipients:</h2>
         <input
